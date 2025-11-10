@@ -36,6 +36,16 @@ All notebooks are stored in the `notebooks/` folder.
 | **4_FIM_database_preprocessing.ipynb** | Prepares raster, vector, and metadata files before loading. |
 | **5_PopulateFIM_to_database.ipynb** | Populates the harmonized database with processed maps and metadata. |
 
+## Open in Google Colab
+
+| Notebook | Open in Colab |
+|-----------|---------------|
+| 1_FEMA.ipynb | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Pitamberwagle/Multi-model_FIM_integration_database/blob/main/notebooks/1_FEMA.ipynb) |
+| 2_InFRM_USGS_renaming.ipynb | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Pitamberwagle/Multi-model_FIM_integration_database/blob/main/notebooks/2_InFRM_USGS_renaming.ipynb) |
+| 3_FIMServe_BYU_version.ipynb | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Pitamberwagle/Multi-model_FIM_integration_database/blob/main/notebooks/3_FIMServe_BYU_version.ipynb) |
+| 4_FIM_database_preprocessing.ipynb | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Pitamberwagle/Multi-model_FIM_integration_database/blob/main/notebooks/4_FIM_database_preprocessing.ipynb) |
+| 5_PopulateFIM_to_database.ipynb | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Pitamberwagle/Multi-model_FIM_integration_database/blob/main/notebooks/5_PopulateFIM_to_database.ipynb) |
+
 ---
 
 ## Workflow Explanation
