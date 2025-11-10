@@ -15,13 +15,13 @@ This collection of notebooks supports the full workflow for:
 ### 1. FIM Database Relational Diagram
 This diagram shows the relational structure of the multi-model FIM database, including tables for model types, rating curves, and flood extents.
 
-![Database Relational Diagram](./Database_Relational_Diagram.jpg)
+![Database Relational Diagram](./Database_Relational_Diagram.png)
 All notebooks are designed for **step-by-step execution** within **Google Colab**. Each notebook includes inline instructions and user input prompts for clarity.
 
 ### 2. FIM Database Architecture
 This figure illustrates how flood maps from FEMA, InFRM, USGS, and the NWM HAND model are integrated through the database for on-demand visualization.
 
-![FIM Database Architecture](./FIM_architecture_diagram.jpg)
+![FIM Database Architecture](./FIM_architecture_diagram.png)
 
 ---
 
