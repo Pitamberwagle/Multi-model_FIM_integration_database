@@ -82,7 +82,7 @@ If you use this repository, please cite:
 
 If you use this repository, please cite:
 
-> Wagle, P., Oldham S., , Nelson, E., et al.(2025). *Multi-model FIM Integration Database (v1.0)* [Data set]. Zenodo.  
+> Wagle, P. & Oldham S.(2025). *Multi-model FIM Integration Database: Initial Release – Multi-model FIM Integration Database (v1.0). Zenodo.  
 > https://doi.org/10.5281/zenodo.17575342
 
 ---
