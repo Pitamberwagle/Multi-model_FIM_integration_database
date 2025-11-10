@@ -1,7 +1,6 @@
 # Multi-model_FIM_integration_database
 
-This repository provides Google Colab notebooks for integrating and populating a **multi-model Flood Inundation Mapping (FIM) database** connected to the **National Water Model (NWM)**.  
-The workflow harmonizes flood maps from multiple models — including FEMA, InFRM, USGS, and HAND — into a consistent relational structure for visualization and comparison.
+This repository provides Google Colab notebooks for integrating and populating a **multi-model Flood Inundation Mapping (FIM) database** connected to the **National Water Model (NWM)**. The workflow harmonizes flood maps from multiple models — including FEMA, InFRM, USGS, and HAND — into a consistent relational structure for visualization and comparison.
 
 ---
 
@@ -44,18 +43,16 @@ All notebooks are stored in the `notebooks/` folder.
 Processes **1** and **2** correspond to importing and preparing flood maps from **FEMA**, **InFRM**, and **USGS** sources.  
 These steps are **optional** and can be adapted for additional flood map sources that follow similar data structures.
 
-Process **3** is **mandatory**, as it generates the baseline **National Water Model (NWM) HAND-based FIM** using the FIM-Serv framework.  
+Process **3** is **mandatory**, as it generates the baseline **National Water Model (NWM) HAND-based FIM** using the FIM-Serv framework. 
+
 Processes **4** and **5** follow sequentially after process 3, performing preprocessing and database population.
+
 Together, these steps integrate multiple FIM datasets into a harmonized databse for visualization and evaluation.
 
 
 ## FIM-Serv Framework
 
-This project uses the **OWP HAND-FIM “as a service” (FIMserv)** framework for generating the baseline **National Water Model HAND-based FIMs**.  
-FIMserv provides a streamlined, cloud-enabled pipeline for producing inundation extent and depth rasters using retrospective or forecasted NWM streamflow data.
-
-FIMserv is developed under the **Surface Dynamics Modeling Lab (SDML)** at the **University of Alabama**, supported by the  
-**Cooperative Institute for Research to Operations in Hydrology (CIROH)**.
+This project uses the **OWP HAND-FIM “as a service” (FIMserv)** framework for generating the baseline **National Water Model HAND-based FIMs**. FIMserv provides a streamlined, cloud-enabled pipeline for producing inundation extent and depth rasters using retrospective or forecasted NWM streamflow data. FIMserv is developed under the **Surface Dynamics Modeling Lab (SDML)** at the **University of Alabama**.
 
 📘 GitHub Repository: [https://github.com/sdmlua/FIMserv](https://github.com/sdmlua/FIMserv)
 
