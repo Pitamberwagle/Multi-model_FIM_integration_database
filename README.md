@@ -36,7 +36,7 @@ All notebooks are stored in the `notebooks/` folder.
 | **4_FIM_database_preprocessing.ipynb** | Prepares raster, vector, and metadata files before loading. |
 | **5_PopulateFIM_to_database.ipynb** | Populates the harmonized database with processed maps and metadata. |
 
-The FIMServe_BYU_version.ipynb notebook connects to the the Cooperative Institute for Research to Operations in Hydrology (CIROH) API for retrieving National Water Model (NWM) discharge data, which is then used in the FIM-Serv workflow to generate HAND-based flood inundation maps. Access to this API requires an authorized key provided by CIROH.The previously shared API key has been revoked and is no longer active. Users must obtain their own key directly from CIROH before running the notebook.
+The FIMServe_BYU_version.ipynb notebook connects to the the Cooperative Institute for Research to Operations in Hydrology (CIROH) API for retrieving National Water Model (NWM) discharge data, which is then used in the FIM-Serv workflow to generate HAND-based flood inundation maps. Access to this API requires an authorized key provided by CIROH.The API key in the notebook has been revoked and is no longer active. Users must obtain their own key directly from CIROH before running the notebook.
 
 ## Open in Google Colab
 
