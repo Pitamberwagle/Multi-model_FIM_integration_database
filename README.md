@@ -78,7 +78,12 @@ This repository is released under the **BSD 3-Clause License**.
 
 If you use this repository, please cite:
 
-> Wagle, P., Nelson, E., et al. (2025). *Multi-model FIM Integration Database.* GitHub Repository.
+## Citation
+
+If you use this repository, please cite:
+
+> Wagle, P., Oldham S., , Nelson, E., et al.(2025). *Multi-model FIM Integration Database (v1.0)* [Data set]. Zenodo.  
+> https://doi.org/10.5281/zenodo.17575342
 
 ---
 
