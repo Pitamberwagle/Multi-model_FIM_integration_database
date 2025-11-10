@@ -46,9 +46,8 @@ These steps are **optional** and can be adapted for additional flood map sources
 
 Process **3** is **mandatory**, as it generates the baseline **National Water Model (NWM) HAND-based FIM** using the FIM-Serv framework.  
 Processes **4** and **5** follow sequentially after process 3, performing preprocessing and database population.
+Together, these steps integrate multiple FIM datasets into a harmonized databse for visualization and evaluation.
 
-Together, these steps integrate multiple FIM datasets into a harmonized database for visualization and evaluation.
----
 
 ## FIM-Serv Framework
 
