@@ -80,10 +80,6 @@ This repository is released under the **BSD 3-Clause License**.
 
 If you use this repository, please cite:
 
-## Citation
-
-If you use this repository, please cite:
-
 > Wagle, P. & Oldham S.(2025). *Multi-model FIM Integration Database: Initial Release – Multi-model FIM Integration Database (v1.0). Zenodo.  
 > https://doi.org/10.5281/zenodo.17575342
 
