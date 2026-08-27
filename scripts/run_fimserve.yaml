@@ -1,0 +1,23 @@
+# FIMServe Configuration (reach-scale)
+# ─────────────────────────────────────
+
+# NWM reach (feature) ID to generate HAND FIM for.
+reach_id: "447692"
+
+# HUC8 that contains the reach (crosswalk from reach_id deferred for now).
+huc8: "03140305"
+
+# Folder holding the HEC-RAS1D library, laid out as:
+#   <hecras_dir>/<reach_id>/z_<bc>/f_<flow_cfs>.tif
+# HAND flows are derived from this so they match the HEC-RAS1D flows 1:1.
+hecras_dir: "../sample_data/HECRAS-1D"
+
+# Optional OWP HAND version: "4.5", "4.8", or omit for the latest (4.9).
+# hand_version: "4.5"
+
+# FIMserv working dirs (relative to the scripts/ folder you run from).
+output_dir: "output"
+csv_dir: "data/inputs"
+
+# Where the final clipped HAND depth maps are written.
+final_output_dir: "../All_Outputs/Models/HAND"

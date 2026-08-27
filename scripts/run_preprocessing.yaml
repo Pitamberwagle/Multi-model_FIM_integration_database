@@ -1,0 +1,37 @@
+# Preprocessing Configuration (reach-scale)
+# ──────────────────────────────────────────
+
+reach_id: "447692"
+huc8: "03140305"
+
+# Input model outputs
+hand_dir: "../All_Outputs/Models/HAND"     # HAND depth rasters (run_fimserve.py)
+hecras_dir: "../sample_data/HECRAS-1D"                  # HEC-RAS1D extent library
+
+# Where standardized GIS + rating curves + metadata are written
+output_dir: "../All_Outputs/Processed"
+
+# Optional reach location (else derived from the HAND extent centroid)
+# reach_latitude: 31.74
+# reach_longitude: -88.68
+
+# Per-model metadata (optional; fills the fim_source table)
+model_metadata:
+  HAND:
+    entity_name: "OWP / CIROH"
+    version: "4.9"
+    year: 2026
+    notes: "NWM HAND-FIM via FIMserv; depth anchored on discharge only."
+  HEC-RAS1D:
+    entity_name: ""
+    version: ""
+    year: 2026
+    notes: "HEC-RAS 1D extent library; multiple downstream boundary conditions."
+
+model_defaults:
+  flow_unit: "cfs"
+  depth_unit: "ft"
+  nwm_reference_version: "3.0"
+
+# NOTE: database, base_url, and hydroshare settings live in the static
+# run_populate_db.yaml (no longer generated from here).

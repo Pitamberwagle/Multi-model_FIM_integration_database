@@ -1,0 +1,31 @@
+database:
+  filename: ../All_Outputs/Files_uploaded/Ripple1D.db
+  type: new
+processed_dir: ../All_Outputs/Processed
+reach_id: '447692'
+publish_dir: ../All_Outputs/Publish
+base_url_mode: custom
+base_url: https://raw.githubusercontent.com/Pitamberwagle/FIMstorage/main/447692
+model_defaults:
+  flow_unit: cfs
+  depth_unit: ft
+  nwm_reference_version: '3.0'
+upload_to_hydroshare: false
+hydroshare:
+  flood_level: ''
+  contact_name: Pitamber
+  contact_email: waglep@byu.edu
+  resource_type: new
+  resource_id: ''
+  resource_name: Multi-Model FIM Database (reach 447692)
+  resource_description: HAND vs HEC-RAS1D FIMs for NWM reach 447692.
+  resource_subjects:
+  - FIM
+  - Flood Inundation Mapping
+  - Flow
+  river_name: '447692'
+  gauge_id: NWM-447692
+  gauge_latitude: 30.94267
+  gauge_longitude: -87.33588
+  stage_unit: ft
+  discharge_unit: cfs
