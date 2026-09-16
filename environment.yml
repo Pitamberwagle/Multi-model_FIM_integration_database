@@ -1,7 +1,6 @@
 name: fim
 channels:
   - conda-forge
-  - defaults
 dependencies:
   - python=3.11
 
@@ -18,11 +17,9 @@ dependencies:
   - scipy
   - scikit-learn
 
-  # fimserve pins numba==0.66.0, which needs llvmlite<0.49,>=0.48.
-  # conda-forge has no osx-64 numba 0.66.0, so let pip build numba (it does
-  # so fine), but provide the prebuilt llvmlite 0.48 here so pip does NOT try
-  # to compile llvmlite from source (that build needs a full LLVM install).
-  - llvmlite=0.48.*
+  # numba / llvmlite (needed by fimserve)
+  - numba
+  - llvmlite
 
   # Cloud / zarr
   - xarray

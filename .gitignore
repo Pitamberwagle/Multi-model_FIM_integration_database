@@ -211,3 +211,9 @@ scripts/code/
 scripts/data/
 scripts/output/
 All_Outputs/
+
+# macOS
+.DS_Store
+
+# HEC-RAS 1D model files
+HECRAS-1D/

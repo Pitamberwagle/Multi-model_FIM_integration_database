@@ -432,7 +432,7 @@ def generate_filenames_and_rename(conn, db_file, gis_dir, output_dir="."):
 
     flood_db = os.path.splitext(db_file)[0]
     json_filename = flood_db + ".json"
-    vis_json_filename = flood_db + "_vis.json"
+    vis_json_filename = flood_db + "_scenario.json"
     filenames += [db_file, json_filename, vis_json_filename, "README.txt"]
     filenames = list(set(f for f in filenames if str(f) != "nan"))
 
@@ -691,7 +691,7 @@ def generate_json_files(conn, db_file, hydroshare_cfg, resource_id="",
     cursor = conn.cursor()
 
     # Visualization JSON
-    vis_json_filename = os.path.join(output_dir, flood_db + "_vis.json")
+    vis_json_filename = os.path.join(output_dir, flood_db + "_scenario.json")
     hs = hydroshare_cfg
     vis_json = {
         "location": flood_db,
@@ -837,7 +837,7 @@ def upload_to_hydroshare(conn, db_file, hydroshare_cfg, new_filenames, gis_dir="
 
     flood_db = os.path.splitext(os.path.basename(db_file))[0]
     json_filename = os.path.join(output_dir, flood_db + ".json")
-    vis_json_filename = os.path.join(output_dir, flood_db + "_vis.json")
+    vis_json_filename = os.path.join(output_dir, flood_db + "_scenario.json")
 
     for f in resource.files():
         if f.endswith(os.path.basename(json_filename)) or f.endswith(os.path.basename(vis_json_filename)):
@@ -868,23 +868,30 @@ def upload_to_hydroshare(conn, db_file, hydroshare_cfg, new_filenames, gis_dir="
         if fname.endswith(".csv") and os.path.exists(fname):
             file_list.append(fname)
 
-    uploaded = 0
-    failed = []
-    for f in file_list:
-        try:
-            resource.file_upload(f)
-            uploaded += 1
-            print(f"  Uploaded: {os.path.basename(f)}")
-        except Exception as e:
-            failed.append(os.path.basename(f))
-            print(f"  Failed: {os.path.basename(f)} ({e})")
-
-    print(f"\nUploaded {uploaded}/{len(file_list)} files to HydroShare")
-    if failed:
-        print(
-            f"  {len(failed)} file(s) failed but may still have uploaded "
-            "server-side. Check your resource on HydroShare."
-        )
+    total = len(file_list)
+    print(f"  Uploading {total} files in bulk...")
+    try:
+        resource.file_upload(*file_list)
+        print(f"\n  [100%] Uploaded {total}/{total} files to HydroShare")
+    except Exception as e:
+        print(f"\n  Bulk upload failed ({e}), falling back to one-by-one...")
+        uploaded = 0
+        failed = []
+        for i, f in enumerate(file_list, 1):
+            pct = int(i / total * 100)
+            try:
+                resource.file_upload(f)
+                uploaded += 1
+                print(f"  [{pct:3d}%] ({i}/{total}) Uploaded: {os.path.basename(f)}")
+            except Exception as e2:
+                failed.append(os.path.basename(f))
+                print(f"  [{pct:3d}%] ({i}/{total}) Failed: {os.path.basename(f)} ({e2})")
+        print(f"\nUploaded {uploaded}/{total} files to HydroShare")
+        if failed:
+            print(
+                f"  {len(failed)} file(s) failed but may still have uploaded "
+                "server-side. Check your resource on HydroShare."
+            )
 
 
 # ─── Step 6.5: Assemble a single ready-to-push publish folder ───────────────
@@ -1016,14 +1023,14 @@ def main():
     # Step 6.5: Assemble one ready-to-push publish folder
     print("\n>>> Step 6.5: Assembling publish folder...")
     flood_db = os.path.splitext(os.path.basename(db_file))[0]
-    vis_json = os.path.join(output_dir, flood_db + "_vis.json")
+    vis_json = os.path.join(output_dir, flood_db + "_scenario.json")
     reach_id = cfg.get("reach_id", "reach")
     publish_dir = cfg.get("publish_dir", "../All_Outputs/Publish")
     publish_path = assemble_publish_folder(gis_dir, [vis_json], publish_dir,
                                            reach_id)
     if base_url:
         print(f"    Push {publish_path}/ to your host, then open:\n"
-              f"    {base_url.rstrip('/')}/{flood_db}_vis.json")
+              f"    {base_url.rstrip('/')}/{flood_db}_scenario.json")
 
     # Step 7: Upload to HydroShare (optional)
     if do_upload:

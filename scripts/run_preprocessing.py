@@ -317,13 +317,20 @@ def _raster_to_extent(raster_path):
         else gpd.GeoDataFrame(geometry=[], crs=crs)
 
 
-def _dissolve_simplify(gdf, tol_factor=1.5):
+def _dissolve_simplify(gdf, tol_factor=1.5, min_hole_area_m2=500):
     metric = _pick_metric_crs(gdf)
     gdf_m = gdf.to_crs(metric)
     merged = unary_union(gdf_m.geometry)
-    tol = max(_median_edge_len(merged) * tol_factor, 0.0)
+    median_edge = _median_edge_len(merged)
+    total_area = merged.area if hasattr(merged, 'area') else 0
+    # Scale down simplification for small extents (low flows)
+    if total_area < 50000:
+        tol_factor = tol_factor * 0.25
+    elif total_area < 200000:
+        tol_factor = tol_factor * 0.5
+    tol = max(median_edge * tol_factor, 0.0)
     simple = merged.simplify(tol, preserve_topology=True).buffer(0)
-    simple = _remove_holes(simple)
+    simple = _remove_small_holes(simple, min_hole_area_m2)
     out = gpd.GeoDataFrame(geometry=[simple], crs=metric)
     return out.to_crs(TARGET_CRS)
 
@@ -356,11 +363,18 @@ def _median_edge_len(geom):
     return float(np.median(lens)) if lens else 0.0
 
 
-def _remove_holes(g):
+def _remove_small_holes(g, min_area=500):
+    """Remove only holes smaller than min_area (m^2), keeping real dry gaps."""
     if isinstance(g, Polygon):
-        return Polygon(g.exterior)
+        kept = [r for r in g.interiors if Polygon(r).area >= min_area]
+        return Polygon(g.exterior, kept)
     if isinstance(g, MultiPolygon):
-        cleaned = [Polygon(p.exterior) for p in g.geoms if not p.is_empty]
+        cleaned = []
+        for p in g.geoms:
+            if p.is_empty:
+                continue
+            kept = [r for r in p.interiors if Polygon(r).area >= min_area]
+            cleaned.append(Polygon(p.exterior, kept))
         if len(cleaned) > 1:
             return MultiPolygon(cleaned)
         return cleaned[0] if cleaned else g
